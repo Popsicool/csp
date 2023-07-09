@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>CSP Alumni</h1>
+		<h3>Get birthday celebrants</h3>
+		<p><button id="today" data-id="1">Today</button> <button id="month">This Month</button></p>
+		<div id="celeb_table" data-id="2"></div>
+
+		<script>
+			const mon = document.querySelector("#month");
+			mon.addEventListener("click",() => call(1));
+            const day = document.querySelector("#today");
+			day.addEventListener("click", () => call(2));
+            const form =  document.getElementById("celeb_table")
+			async function call(a) {
+                let url;
+                if (a == 1){
+                    url = "{% url 'celeb' %}"
+                }
+                else{
+                    url = "{% url 'today' %}"
+                }
+                form.innerHTML = ""
+				const call = await fetch(url)
+				const res = await call.json()
+                const table = document.createElement('table');
+                const headerRow = document.createElement('tr');
+                const headerCell = document.createElement('th');
+                const headerCell2 = document.createElement('th');
+                const headerCell3 = document.createElement('th');
+                headerCell.textContent = "Name";
+                headerCell2.textContent = "Gender";
+                headerCell3.textContent = "Day";
+                headerRow.appendChild(headerCell);
+                headerRow.appendChild(headerCell2);
+                headerRow.appendChild(headerCell3);
+                table.appendChild(headerRow);
+                const keys = await Object.keys(res.birthdays[0]);
+                for (var rec in res.birthdays){
+                    const dataRow = document.createElement('tr');
+                    for (const key of keys) {
+                    const dataCell = document.createElement('td');
+                    dataCell.textContent = res.birthdays[rec][key];
+                    dataRow.appendChild(dataCell);
+                    }
+                    table.appendChild(dataRow);
+                }
+                form.appendChild(table)
+			}
+        </script>
+	</body>
+</html>
