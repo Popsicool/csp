@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 
 
 def update_something():
-    print(datetime.now())
+    pass
     # months = str(date.today()).split("-")[1]
     # day = str(date.today()).split("-")[2]
     # birthdays = []

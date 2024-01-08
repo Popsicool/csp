@@ -11,7 +11,7 @@ def home(request):
 def celeb(request):
     months = str(date.today()).split("-")[1]
     birthdays = []
-    with open("app/alumni.csv", "r") as file:
+    with open("app/alumni.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         for row in reader:
             mon = row[8].split("-")[0]
@@ -28,7 +28,7 @@ def today(request):
     months = str(date.today()).split("-")[1]
     day = str(date.today()).split("-")[2]
     birthdays = []
-    with open("app/alumni.csv", "r") as file:
+    with open("app/alumni.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         for row in reader:
             mon = row[8].split("-")[0]
