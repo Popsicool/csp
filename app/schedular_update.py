@@ -1,7 +1,7 @@
-import csv
-from datetime import date, datetime, time
-from django.conf import settings
-from django.core.mail import EmailMessage
+# import csv
+# from datetime import date, datetime, time
+# from django.conf import settings
+# from django.core.mail import EmailMessage
 
 
 def update_something():

@@ -1,0 +1,33 @@
+# Bytes compiled by python
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+
+# Django related files
+*.sqlite3
+
+# IDE and editor files
+.vscode/
+.pycharm/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Git files
+.git/
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# Other
+.env
+*.env
+*.tmp
+node_modules/
+staticfiles/
+media/
+.vscode/
